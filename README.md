@@ -1,6 +1,7 @@
-# Lucas Yang's Vue & TS Starter
+# auto-solve-puzzle-game
 
-> Start a new project: `npx degit ycs77/vue-ts-starter my-project`
+- [ ] 數獨
+- [ ] 1A1B
 
 ## Installation
 
