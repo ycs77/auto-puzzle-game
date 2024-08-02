@@ -1,4 +1,4 @@
-import { isValidSudoku, solveSudoku } from './solve-sudoku'
+import { isValidSudoku, solveSudoku } from './solve-sudoku.node'
 
 test('can return the full board', () => {
   const board = [

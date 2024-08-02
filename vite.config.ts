@@ -15,7 +15,7 @@ export default defineConfig({
         'vue',
         {
           'vue-router': ['useRoute', 'useRouter'],
-          '@vueuse/core': [],
+          '@vueuse/core': ['useElementSize'],
         },
       ],
       dirs: ['src/composables'],

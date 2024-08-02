@@ -10,14 +10,14 @@ test('can guess 1A1B to answer is 7493', () => {
   expect(guess1A1B({
     history: [],
     seed,
-  })).toBe('0514')
+  })).toStrictEqual({ guess: '0514', isAnswer: false })
 
   expect(guess1A1B({
     history: [
       { guess: '0514', hint: { a: 0, b: 1 } },
     ],
     seed,
-  })).toBe('6837')
+  })).toStrictEqual({ guess: '6837', isAnswer: false })
 
   expect(guess1A1B({
     history: [
@@ -25,7 +25,7 @@ test('can guess 1A1B to answer is 7493', () => {
       { guess: '6837', hint: { a: 0, b: 2 } },
     ],
     seed,
-  })).toBe('3208')
+  })).toStrictEqual({ guess: '3208', isAnswer: false })
 
   expect(guess1A1B({
     history: [
@@ -34,7 +34,7 @@ test('can guess 1A1B to answer is 7493', () => {
       { guess: '3208', hint: { a: 0, b: 1 } },
     ],
     seed,
-  })).toBe('8975')
+  })).toStrictEqual({ guess: '8975', isAnswer: false })
 
   expect(guess1A1B({
     history: [
@@ -44,7 +44,7 @@ test('can guess 1A1B to answer is 7493', () => {
       { guess: '8975', hint: { a: 0, b: 2 } },
     ],
     seed,
-  })).toBe('1689')
+  })).toStrictEqual({ guess: '1689', isAnswer: false })
 
   expect(guess1A1B({
     history: [
@@ -55,7 +55,7 @@ test('can guess 1A1B to answer is 7493', () => {
       { guess: '1689', hint: { a: 0, b: 1 } },
     ],
     seed,
-  })).toBe('2756')
+  })).toStrictEqual({ guess: '2756', isAnswer: false })
 
   expect(guess1A1B({
     history: [
@@ -67,7 +67,7 @@ test('can guess 1A1B to answer is 7493', () => {
       { guess: '2756', hint: { a: 0, b: 1 } },
     ],
     seed,
-  })).toBe('7493')
+  })).toStrictEqual({ guess: '7493', isAnswer: true })
 })
 
 test('auto guess 1A1B', () => {
@@ -80,7 +80,7 @@ test('auto guess 1A1B', () => {
 
   while (i < 10) {
     // 程式開始猜數字
-    const guess = guess1A1B({ history, seed })
+    const { guess } = guess1A1B({ history, seed })
     if (!guess) break
 
     // 計算幾A幾B

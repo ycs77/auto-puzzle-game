@@ -1,4 +1,10 @@
+import { SudokuLogger } from './solve-sudoku-logs'
+
+// Node 版本的解數獨函式，只有增加了日誌功能，用於調試使用
+
 export function solveSudoku(board: (number | null)[][]) {
+  const logger = new SudokuLogger()
+
   const newBoard = board.map(row => row.map(num => num === 0 ? null : num))
 
   /** 檢查整個數獨是否填滿 */
@@ -35,6 +41,7 @@ export function solveSudoku(board: (number | null)[][]) {
   function solve(row: number, col: number, deep: number = 0) {
     // 數獨已經填滿
     if (isFull()) {
+      logger.log(`[${row}, ${col}] 數獨已經填滿`, deep)
       return true
     }
 
@@ -42,10 +49,12 @@ export function solveSudoku(board: (number | null)[][]) {
     if (typeof newBoard[row][col] === 'number') {
       const nextRow = row + (col === 8 ? 1 : 0)
       const nextCol = (col + 1) % 9
+      logger.log(`[${row}, ${col}] 已經填入數字 ${newBoard[row][col]}，跳到下一個位置 [${nextRow}, ${nextCol}]`, deep)
       return solve(nextRow, nextCol, deep + 1)
     }
 
     // 嘗試填入 1~9
+    logger.log(`[${row}, ${col}] 嘗試填入 1~9`, deep)
     for (let num = 1; num <= 9; num++) {
       // 如果這個數字可以填入這個位置
       if (isValid(row, col, num)) {
@@ -55,21 +64,27 @@ export function solveSudoku(board: (number | null)[][]) {
         // 嘗試填入下一個位置
         const nextRow = row + (col === 8 ? 1 : 0)
         const nextCol = (col + 1) % 9
+        logger.log(`[${row}, ${col}] 填入數字 ${num}，嘗試填入下一個位置 [${nextRow}, ${nextCol}]`, deep)
         if (solve(nextRow, nextCol, deep + 1)) {
+          logger.log(`[${row}, ${col}] 填入數字 ${num} 成功`, deep)
           return true
         }
 
         // 如果無法填入下一個位置，就把這個位置的數字清空
         newBoard[row][col] = null
+        logger.log(`[${row}, ${col}] 無法填入下一個位置，清空數字 ${num}`, deep)
       }
     }
 
     // 如果無法填入任何數字，就回傳 false
+    logger.log(`[${row}, ${col}] 無法填入任何數字`, deep)
     return false
   }
 
   // 從左上角開始解數獨
   solve(0, 0)
+
+  logger.exportHtml()
 
   return newBoard
 }

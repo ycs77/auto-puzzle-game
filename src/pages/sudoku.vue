@@ -1,0 +1,86 @@
+<template>
+  <div class="py-8">
+    <h1 class="text-2xl text-center font-bold">數獨</h1>
+
+    <div class="mt-4 max-w-[500px] mx-auto px-4">
+      <div
+        ref="wrapperRef"
+        class="flex flex-col"
+        :style="{
+          '--wrapper-width': `${wrapperWidth}px`,
+          '--grid-size': `${wrapperWidth / 9}px`,
+        }"
+      >
+        <div
+          v-for="row in 9"
+          :key="row"
+          class="flex"
+        >
+          <div
+            v-for="col in 9"
+            :key="col"
+            class="w-[--grid-size] h-[--grid-size]"
+            :class="[
+              [1, 4, 7].includes(row) ? 'border-t-2 border-t-black' : 'border-t border-t-gray-400',
+              [1, 4, 7].includes(col) ? 'border-l-2 border-l-black' : 'border-l border-l-gray-400',
+              col === 9 ? 'border-r-2 border-r-black' : '',
+              row === 9 ? 'border-b-2 border-b-black' : '',
+            ]"
+          >
+            <input
+              v-model.number="sudoku[row - 1][col - 1]"
+              type="text"
+              class="w-full h-full p-0 text-center text-[length:calc(var(--grid-size)*0.6)] focus:outline-none"
+              maxlength="1"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <button type="button" class="inline-block px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md transition-colors" @click="solve">
+          開始解數獨
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { solveSudoku } from '../sudoku/solve-sudoku'
+
+const wrapperRef = ref(null) as Ref<HTMLDivElement | null>
+const { width: wrapperWidth } = useElementSize(wrapperRef)
+
+const sudoku = ref<(number | null)[][]>([
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null],
+])
+
+sudoku.value = [
+  [2, null, null, null, null, null, null, null, 4],
+  [null, null, 6, 1, 5, 7, 8, null, null],
+  [null, 3, null, null, 6, null, null, 9, null],
+  [null, 6, null, 4, null, 5, null, 8, null],
+  [null, 4, 2, null, 7, null, 9, 5, null],
+  [null, 8, null, 6, null, 1, null, 2, null],
+  [null, 1, null, null, 3, null, null, 6, null],
+  [null, null, 3, 7, 4, 8, 5, null, null],
+  [5, null, null, null, null, null, null, null, 3],
+]
+
+function solve() {
+  // 如果全部格子都沒有填數字，就不執行解數獨
+  if (sudoku.value.every(row => row.every(num => typeof num !== 'number'))) return
+
+  sudoku.value = solveSudoku(sudoku.value)
+}
+</script>

@@ -1,14 +1,6 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
 import routes from '~pages'
 import './styles/index.css'
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})
-
-createApp(App)
-  .use(router)
-  .mount('#app')
+export const createApp = ViteSSG(App, { routes })

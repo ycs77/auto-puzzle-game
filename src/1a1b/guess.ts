@@ -11,6 +11,11 @@ export interface Item {
   hint: Hint
 }
 
+export interface ReturnGuess1A1B {
+  guess: string | undefined
+  isAnswer: boolean
+}
+
 const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 // 答案候選庫
@@ -19,7 +24,7 @@ let answers: string[] = []
 export function guess1A1B(options: {
   history?: Item[]
   seed?: number
-} = {}): string | undefined {
+} = {}): ReturnGuess1A1B {
   const { history = [], seed } = options
 
   if (history.length === 0) {
@@ -42,7 +47,9 @@ export function guess1A1B(options: {
     // 將 0~9 中過濾掉歷史紀錄的數字
     const leftoverNums = difference(nums, historiesNums)
     // 剩下的數字中隨機取出4個數字
-    return arrayShuffle(leftoverNums, seed).slice(0, 4).join('')
+    const guess = arrayShuffle(leftoverNums, seed).slice(0, 4).join('')
+
+    return { guess, isAnswer: answers.length === 1 }
   }
 
   // 第三次開始就用窮舉來過濾不正確答案
@@ -55,7 +62,9 @@ export function guess1A1B(options: {
   })
 
   // 隨機從答案候選庫中取出一個答案
-  return arrayShuffle(answers, seed)[0]
+  const guess = arrayShuffle(answers, seed)[0]
+
+  return { guess, isAnswer: answers.length === 1 }
 }
 
 export function getPossibleAnswers() {
