@@ -10,7 +10,7 @@
         <div v-if="!isAnswer" class="mb-8 text-center">
           <input
             v-model.number="a"
-            type="text"
+            type="number"
             class="w-10 p-2 border border-gray-400 rounded-md"
             maxlength="4"
             autocomplete="off"
@@ -18,7 +18,7 @@
           A
           <input
             v-model.number="b"
-            type="text"
+            type="number"
             class="w-10 p-2 border border-gray-400 rounded-md"
             maxlength="4"
             autocomplete="off"
