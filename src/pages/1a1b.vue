@@ -96,5 +96,6 @@ function reset() {
   a.value = undefined
   b.value = undefined
   history.value = []
+  isAnswer.value = false
 }
 </script>
