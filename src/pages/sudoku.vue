@@ -65,18 +65,6 @@ const sudoku = ref<(number | null)[][]>([
   [null, null, null, null, null, null, null, null, null],
 ])
 
-sudoku.value = [
-  [2, null, null, null, null, null, null, null, 4],
-  [null, null, 6, 1, 5, 7, 8, null, null],
-  [null, 3, null, null, 6, null, null, 9, null],
-  [null, 6, null, 4, null, 5, null, 8, null],
-  [null, 4, 2, null, 7, null, 9, 5, null],
-  [null, 8, null, 6, null, 1, null, 2, null],
-  [null, 1, null, null, 3, null, null, 6, null],
-  [null, null, 3, 7, 4, 8, 5, null, null],
-  [5, null, null, null, null, null, null, null, 3],
-]
-
 function solve() {
   // 如果全部格子都沒有填數字，就不執行解數獨
   if (sudoku.value.every(row => row.every(num => typeof num !== 'number'))) return
