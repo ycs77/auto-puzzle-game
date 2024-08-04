@@ -11,7 +11,7 @@
           <input
             v-model.number="a"
             type="number"
-            class="w-10 p-2 border border-gray-400 rounded-md"
+            class="w-10 sm:w-12 p-2 border border-gray-400 rounded-md"
             maxlength="4"
             autocomplete="off"
           >
@@ -19,7 +19,7 @@
           <input
             v-model.number="b"
             type="number"
-            class="w-10 p-2 border border-gray-400 rounded-md"
+            class="w-10 sm:w-12 p-2 border border-gray-400 rounded-md"
             maxlength="4"
             autocomplete="off"
           >
