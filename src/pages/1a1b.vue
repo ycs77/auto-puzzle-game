@@ -27,13 +27,13 @@
         </div>
       </template>
 
-      <div v-if="!isAnswer && !isInvalid" class="text-center">
+      <div v-if="!isAnswer && !isEmptyNumbersError" class="text-center">
         <button type="button" class="inline-block px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md transition-colors" @click="callProgramGuessNumber">
           猜數字
         </button>
       </div>
 
-      <div v-if="isInvalid" class="text-center">
+      <div v-if="isEmptyNumbersError" class="text-center">
         <p class="text-red-500">當前沒有可以猜的數字...</p>
       </div>
 
@@ -46,7 +46,7 @@
         </li>
       </ul>
 
-      <div v-if="isAnswer || isInvalid" class="mt-4 text-center">
+      <div v-if="isAnswer || isEmptyNumbersError" class="mt-4 text-center">
         <button type="button" class="inline-block px-4 py-1.5 bg-gray-500 hover:bg-gray-600 text-white rounded-md transition-colors" @click="reset">
           重置
         </button>
@@ -64,12 +64,12 @@ const a = ref<number | undefined>(undefined)
 const b = ref<number | undefined>(undefined)
 const history = ref([]) as Ref<Item[]>
 const isAnswer = ref(false)
-const isInvalid = computed(() => history.value.length && !guess.value)
+const isEmptyNumbersError = computed(() => history.value.length && !guess.value)
 
 function callProgramGuessNumber() {
-  if (isAnswer.value) {
-    return
-  }
+  if (isAnswer.value) return
+  if (typeof a.value === 'number' && (a.value < 0 || a.value > 4)) return
+  if (typeof b.value === 'number' && (b.value < 0 || b.value > 4)) return
 
   if (guess.value) {
     history.value.push({

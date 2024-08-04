@@ -1,4 +1,4 @@
-import { difference, uniq } from 'lodash-es'
+import { uniq } from 'lodash-es'
 import { arrayShuffle } from './array'
 
 export interface Hint {
@@ -15,8 +15,6 @@ export interface ReturnGuess1A1B {
   guess: string | undefined
   isAnswer: boolean
 }
-
-const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 // 答案候選庫
 let answers: string[] = []
@@ -40,19 +38,7 @@ export function guess1A1B(options: {
     }
   }
 
-  // 前兩次猜測，隨機選擇 4 個不重複的數字
-  if (history.length < 2) {
-    // 把歷史紀錄所有的數字取出
-    const historiesNums = history.reduce((carry, item) => carry.concat(item.guess.split('')), <string[]>[])
-    // 將 0~9 中過濾掉歷史紀錄的數字
-    const leftoverNums = difference(nums, historiesNums)
-    // 剩下的數字中隨機取出4個數字
-    const guess = arrayShuffle(leftoverNums, seed).slice(0, 4).join('')
-
-    return { guess, isAnswer: answers.length === 1 }
-  }
-
-  // 第三次開始就用窮舉來過濾不正確答案
+  // 用窮舉來過濾不正確答案
   answers = answers.filter(answer => {
     return history.every(item => {
       const a = item.guess.split('').filter((char, i) => char === answer[i]).length
@@ -64,7 +50,10 @@ export function guess1A1B(options: {
   // 隨機從答案候選庫中取出一個答案
   const guess = arrayShuffle(answers, seed)[0]
 
-  return { guess, isAnswer: answers.length === 1 }
+  // 如果上一次猜測猜對了，或是答案候選庫只剩下一個答案，就直接回傳答案
+  const isAnswer = history[history.length - 1]?.hint?.a === 4 || answers.length === 1
+
+  return { guess, isAnswer }
 }
 
 export function getPossibleAnswers() {
