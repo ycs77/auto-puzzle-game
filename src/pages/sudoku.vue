@@ -50,6 +50,10 @@
 <script setup lang="ts">
 import { solveSudoku } from '../sudoku/solve-sudoku'
 
+useHead({
+  title: '數獨 | 程式解題',
+})
+
 const wrapperRef = ref(null) as Ref<HTMLDivElement | null>
 const { width: wrapperWidth } = useElementSize(wrapperRef)
 

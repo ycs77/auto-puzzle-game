@@ -16,6 +16,7 @@ export default defineConfig({
         {
           'vue-router': ['useRoute', 'useRouter'],
           '@vueuse/core': ['useElementSize'],
+          '@unhead/vue': ['useHead'],
         },
       ],
       dirs: ['src/composables'],
