@@ -29,9 +29,10 @@
           >
             <input
               v-model.number="sudoku[row - 1][col - 1]"
-              type="text"
+              type="number"
               class="w-full h-full p-0 text-center text-[length:calc(var(--grid-size)*0.6)] focus:outline-none"
-              maxlength="1"
+              max="9"
+              min="0"
               autocomplete="off"
             >
           </div>
