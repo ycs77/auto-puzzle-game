@@ -1,4 +1,4 @@
-import ycs77 from '@ycs77/eslint-config'
+import ycs77, { GLOB_SRC, GLOB_VUE } from '@ycs77/eslint-config'
 
 export default ycs77({
   vue: true,
@@ -7,6 +7,13 @@ export default ycs77({
     '**/solve-sudoku-logs.html',
   ],
 })
+  .append({
+    files: [GLOB_SRC, GLOB_VUE],
+    rules: {
+      'no-alert': 'off',
+      'no-console': 'off',
+    },
+  })
   .append({
     files: ['**/*.test.ts'],
     rules: {

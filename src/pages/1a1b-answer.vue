@@ -1,6 +1,6 @@
 <template>
   <div class="py-8">
-    <h1 class="text-2xl text-center font-bold">1A1B</h1>
+    <h1 class="text-2xl text-center font-bold">1A1B 程式答題</h1>
 
     <div class="mt-8 max-w-[360px] mx-auto px-4">
       <template v-if="guess">
@@ -54,6 +54,10 @@
         </button>
       </div>
     </div>
+
+    <RouterLink to="/" class="absolute top-4 left-4 inline-flex justify-center items-center w-10 h-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full transition-colors">
+      <HeroiconsArrowLeft class="w-5 h-5 inline-block" />
+    </RouterLink>
   </div>
 </template>
 
