@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BackLink: typeof import('./../components/BackLink.vue')['default']
     HeroiconsArrowLeft: typeof import('~icons/heroicons/arrow-left')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
