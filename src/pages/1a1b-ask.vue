@@ -42,10 +42,10 @@ useHead({
   title: '1A1B | 程式解題',
 })
 
-const answerNums = ref('1234')
-const testNums = ref('')
+const answerNums = useLocalStorage('auto-solve-puzzle-game:answerNums', '1234')
+const testNums = useLocalStorage('auto-solve-puzzle-game:testNums', '')
 const testNumsRef = ref() as Ref<HTMLInputElement>
-const isTesting = ref(false)
+const isTesting = useLocalStorage('auto-solve-puzzle-game:isTesting', false)
 
 const a = computed(() => {
   return testNums.value.split('').filter((char, i) => {

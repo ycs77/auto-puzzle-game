@@ -15,7 +15,7 @@ export default defineConfig({
         'vue',
         {
           'vue-router': ['useRoute', 'useRouter'],
-          '@vueuse/core': ['useElementSize'],
+          '@vueuse/core': ['useElementSize', 'useLocalStorage'],
           '@unhead/vue': ['useHead'],
         },
       ],
