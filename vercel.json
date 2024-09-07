@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/1a1b", "destination": "/1a1b-answer", "permanent": true }
+  ],
   "cleanUrls": true,
   "trailingSlash": false,
   "github": {
