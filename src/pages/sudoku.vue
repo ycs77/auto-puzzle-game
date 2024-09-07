@@ -39,9 +39,13 @@
         </div>
       </div>
 
-      <div class="mt-8 text-center">
+      <div class="mt-8 flex justify-center gap-2">
         <button type="button" class="inline-block px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md transition-colors" @click="solve">
           開始解數獨
+        </button>
+
+        <button type="button" class="inline-block px-4 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-500 rounded-md transition-colors" @click="initial">
+          清除
         </button>
       </div>
     </div>
@@ -60,17 +64,23 @@ useHead({
 const wrapperRef = ref(null) as Ref<HTMLDivElement | null>
 const { width: wrapperWidth } = useElementSize(wrapperRef)
 
-const sudoku = ref<(number | null)[][]>([
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null, null, null],
-])
+const sudoku = ref<(number | null)[][]>([])
+
+initial()
+
+function initial() {
+  sudoku.value = [
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+  ]
+}
 
 function solve() {
   // 如果全部格子都沒有填數字，就不執行解數獨
