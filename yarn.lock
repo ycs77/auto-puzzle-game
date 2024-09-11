@@ -1121,10 +1121,10 @@
   dependencies:
     vue-demi ">=0.14.10"
 
-"@ycs77/eslint-config@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config/-/eslint-config-3.0.1.tgz#e333289985e50ee82c3077c6e31bcee476fc0639"
-  integrity sha512-69L63UwwlxjXT/iO3fEv/MZ4M8FzZetwcckWf0HpNSu0HrKCqIexqjFNdbHp9U/QGEgurrC9FdzCSpt3xsBVUw==
+"@ycs77/eslint-config@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@ycs77/eslint-config/-/eslint-config-3.0.2.tgz#79739d70fa34b8b06c4e8fe66f719d28c0f670da"
+  integrity sha512-F8X94qU2pF3sh8hlby7OMT735X0BSi8ido7HNnFR/ELBo/lmiYyOdcKzMkbIuP3zBXZjxoYacZDOtoghxjhXvA==
   dependencies:
     "@antfu/eslint-config" "~3.2.0"
     eslint-plugin-antfu "^2.4.1"

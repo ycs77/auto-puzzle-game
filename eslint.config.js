@@ -1,4 +1,4 @@
-import ycs77, { GLOB_SRC, GLOB_VUE } from '@ycs77/eslint-config'
+import ycs77, { GLOB_SRC, GLOB_TESTS, GLOB_VUE } from '@ycs77/eslint-config'
 
 export default ycs77({
   vue: true,
@@ -15,11 +15,9 @@ export default ycs77({
     },
   })
   .append({
-    files: ['**/*.test.ts'],
+    files: GLOB_TESTS,
     rules: {
       'style/array-bracket-spacing': 'off',
       'style/no-multi-spaces': 'off',
-
-      'test/consistent-test-it': 'off',
     },
   })
