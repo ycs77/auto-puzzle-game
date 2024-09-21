@@ -12,6 +12,7 @@ export default ycs77({
     rules: {
       'no-alert': 'off',
       'no-console': 'off',
+      'style/no-multi-spaces': 'off',
     },
   })
   .append({
