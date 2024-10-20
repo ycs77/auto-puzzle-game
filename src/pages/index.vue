@@ -14,10 +14,6 @@
       <RouterLink to="/1a1b-ask" class="block px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-center rounded-md transition-colors">
         1A1B 程式出題
       </RouterLink>
-
-      <RouterLink to="/sweeping-robot" class="block px-4 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-center rounded-md transition-colors">
-        模擬掃地機器人
-      </RouterLink>
     </div>
   </div>
 </template>
