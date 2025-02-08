@@ -57,7 +57,7 @@ const b = computed(() => {
   }).length
 })
 
-const result = computed(() => `${a.value}A${b.value > 0 ? `${b.value}B` : ''}`)
+const result = computed(() => `${a.value}A` + (b.value > 0 ? `${b.value}B` : ''))
 
 watch(testNums, () => {
   isTesting.value = true
@@ -75,13 +75,15 @@ function random() {
   }
 
   let resultNums = ''
+
   const nums = Array.from({ length: 10 }).map((_, i) => i)
+  nums.sort((a, b) => Math.floor(Math.random() * 3 - 1))
 
   for (let i = 0; i < 4; i++) {
     const typedArr = new Uint8Array(1)
     crypto.getRandomValues(typedArr)
-    const randomIndex = Math.floor(typedArr[0] / 256 * nums.length)
-    // const randomIndex = Math.floor(Math.random() * nums.length)
+    const randomNum = typedArr[0] / 256
+    const randomIndex = Math.floor(randomNum * nums.length)
     resultNums += nums[randomIndex]
     nums.splice(randomIndex, 1)
   }
