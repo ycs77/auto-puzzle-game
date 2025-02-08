@@ -17,3 +17,9 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+useHead({
+  title: '程式解題',
+})
+</script>
