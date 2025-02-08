@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: '1A1B | 程式解題',
+  title: '1A1B 程式出題',
 })
 
 const answerNums = useLocalStorage('auto-solve-puzzle-game:answerNums', '1234')

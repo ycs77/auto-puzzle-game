@@ -58,7 +58,7 @@
 import { solveSudoku } from '../sudoku/solve-sudoku'
 
 useHead({
-  title: '數獨 | 程式解題',
+  title: '數獨',
 })
 
 const wrapperRef = ref(null) as Ref<HTMLDivElement | null>

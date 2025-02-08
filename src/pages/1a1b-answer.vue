@@ -64,7 +64,7 @@ import { guess1A1B } from '../1a1b/guess'
 import type { Item } from '../1a1b/guess'
 
 useHead({
-  title: '1A1B | 程式解題',
+  title: '1A1B 程式答題',
 })
 
 const guess = ref<string | undefined>(undefined)

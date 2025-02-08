@@ -47,6 +47,10 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: '模擬掃地機器人',
+})
+
 const map = `
   000
   000

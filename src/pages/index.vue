@@ -20,6 +20,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: '程式解題',
+  titleTemplate: '程式解題',
 })
 </script>
